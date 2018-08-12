@@ -1,0 +1,25 @@
+<section style="background-color: #f5f7f9;color:rgba(0,0,0,0.87);">
+  <nav class="navbar navbar-expand-sm bgcolor-grey nav-bar">
+    <span class="text-captalize productMaster-header-text">ML APP</span>
+   
+  </nav>
+  <nav class="navbar navbar-expand-sm bgcolor-grey headernav2">
+    <div class="collapse navbar-collapse " id="collapsibleNavbar">
+      <ul class="navbar-nav ">
+        <li class="nav-item">
+          <a class="nav-link" [routerLinkActive]="['active']" [routerLink]="['admin']"> Admin</a>
+          <!-- <i class="fa fa-angle-down"></i> -->
+        </li>
+  
+        <li class="nav-item" >
+          <a class="nav-link" [routerLinkActive]="['active']" [routerLink]="['user']">User</a>
+          <!-- <i class="fa fa-angle-down"></i> -->
+        </li>
+  
+      </ul>
+    </div>
+  
+   
+  </nav>
+  <router-outlet></router-outlet>
+  </section>
