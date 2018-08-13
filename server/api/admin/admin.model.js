@@ -6,7 +6,7 @@ var crypto = require('crypto'),
 var adminSchema = new Schema({
     
     bookdata: { type: String },
-    Rating: { type: Number },
+    Rating: { type: String },
 })
 
 

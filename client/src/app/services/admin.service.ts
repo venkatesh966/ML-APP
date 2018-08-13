@@ -33,6 +33,7 @@ export class AdminService {
   }
 
   addBookData(info){
+    console.log(info)
     return this.http.post("http://localhost:3000/api/admin",info)
         .map(res => res.json());
   }

@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { AdminService } from '../../services/admin.service';
 import { TrainingData } from '../../interfaces/admin';
+import { BookData } from '../../interfaces/admin2';
 declare var $: any;
 @Component({
   selector: 'app-admin',
@@ -12,7 +13,7 @@ export class AdminComponent implements OnInit {
 
 
   public trainBookString: string;
-  public BookDataString: string;
+  public BookDataString: BookData;
   public trained: TrainingData;
   public gettrainedData: any = [];
 
@@ -20,7 +21,20 @@ export class AdminComponent implements OnInit {
     this.trained = {
       trainedData: "",
     }
+
+    this.BookDataString = {
+      bookdata:"",
+      Rating:""
+    }
   }
+
+  addBookData() {
+    console.log(this.BookDataString)
+    console.log("In add book")
+      this.adminService.addBookData(this.BookDataString).subscribe((res) => {
+      console.log(res)});
+  }
+
 
 
   addTrainBookData() {
@@ -46,8 +60,6 @@ export class AdminComponent implements OnInit {
     var query = {
       trainedData:this.gettrainedData[0].trainedData
     }
-    console.log("In update function");
-    console.log(query)
     this.adminService.updateTrainedData(this.gettrainedData[0]._id, query).subscribe((res) => {
       console.log(res)
     });
