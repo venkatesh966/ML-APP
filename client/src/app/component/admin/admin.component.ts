@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { AdminService } from '../../services/admin.service';
 import { TrainingData } from '../../interfaces/admin';
 import { BookData } from '../../interfaces/admin2';
+import { Router } from '@angular/router';
 declare var $: any;
 @Component({
   selector: 'app-admin',
@@ -17,7 +18,7 @@ export class AdminComponent implements OnInit {
   public trained: TrainingData;
   public gettrainedData: any = [];
 
-  constructor(private adminService: AdminService) {
+  constructor(private adminService: AdminService,private _router:Router) {
     this.trained = {
       trainedData: "",
     }
@@ -29,8 +30,6 @@ export class AdminComponent implements OnInit {
   }
 
   addBookData() {
-    console.log(this.BookDataString)
-    console.log("In add book")
       this.adminService.addBookData(this.BookDataString).subscribe((res) => {
       console.log(res)});
   }
@@ -49,9 +48,7 @@ export class AdminComponent implements OnInit {
 
   getTrainBookData() {
     this.adminService.getTrainedData().subscribe((res) => {
-      console.log(res)
       this.gettrainedData = res;
-      console.log(this.gettrainedData[0].trainedData)
     });
   }
 
@@ -73,6 +70,10 @@ export class AdminComponent implements OnInit {
   //   this.adminService.addTrainedData(this.trainBookString).subscribe();
   // }
 
+  logout() {
+    this._router.navigate(['/']);
+  }
+  
   ngOnInit() {
     this.getTrainBookData();
   }

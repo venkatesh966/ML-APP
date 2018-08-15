@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { AdminService } from '../../services/admin.service';
 import { TrainingData } from '../../interfaces/admin';
+import {Router} from '@angular/router'
 
 @Component({
   selector: 'app-user',
@@ -18,7 +19,7 @@ export class UserComponent implements OnInit {
   public counting:number=0;
   public userDataLength:number;
 
-  constructor(private adminService:AdminService) { }
+  constructor(private adminService:AdminService,private _router:Router) { }
 
 
   getTrainBookData() {
@@ -72,9 +73,13 @@ problemSolving() {
 }
 
 display() {
-  if(this.counting>4)
+  if(this.counting>=0)
   alert(JSON.stringify(this.bookdata[6]))
 }
+logout() {
+  this._router.navigate(['/']);
+}
+
   ngOnInit() {
     this.getTrainBookData();
     this.getBookData()
