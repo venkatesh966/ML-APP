@@ -13,11 +13,13 @@ export class UserComponent implements OnInit {
   public gettrainedData:any = [];
   public userData:string ="";
   public bookdata:any = [];
-  public array:any;
-  public arraybook:any =[];
+  public trainedData:any;
+  public trainedArticles:any;
+  public Databook:any =[];
   public count:number=0;
   public counting:number=0;
   public userDataLength:number;
+  public noArticleDatabook:any =[];
 
   constructor(private adminService:AdminService,private _router:Router) { }
 
@@ -25,17 +27,22 @@ export class UserComponent implements OnInit {
   getTrainBookData() {
     this.adminService.getTrainedData().subscribe((res) => {
       this.gettrainedData = res;
-      this.array =  this.gettrainedData[0].trainedData.split(" ")
+      console.log(res)
+       this.trainedData =  this.gettrainedData[4].trainedData.split(" ")
+      
+      console.log(this.trainedData)
+      this.trainedArticles =  this.gettrainedData[4].trainedArticles.split(" ")
+      console.log(this.trainedArticles)
     });
-   //this.array = this.gettrainedData[0].trainedData.split(" ")
+   //this.trainedData = this.gettrainedData[0].trainedData.split(" ")
   }
 
   Solvation() {
     var userData1 = this.userData.split(" ");
     this.userDataLength = userData1.length;
     for(var i=0;i<userData1.length;i++) {
-      for(var j=0;j<this.array.length;j++) {
-        if(userData1[i] == this.array[j])
+      for(var j=0;j<this.trainedData.length;j++) {
+        if(userData1[i] == this.trainedData[j])
         this.count = this.count+1;
       }
     }
@@ -55,20 +62,36 @@ contentEvaluation() {
 getBookData() {
   this.adminService.getBookData().subscribe((res) => {
     this.bookdata = res;
-    this.arraybook =  this.bookdata[6].bookdata.split(" ")
+    console.log(this.bookdata)
+    for(var i=0;i<this.bookdata.length;i++){
+    this.Databook[i] =  this.bookdata[i].bookdata
+    }
   });
 }
 
 problemSolving() {
   var userData1 = this.userData.split(" ");
+  var userData2 = this.removeArticles(userData1);
   for(var i=0;i<userData1.length;i++) {
-    for(var j=0;j<this.arraybook.length;j++) {
-      if(userData1[i] == this.arraybook[j])
+    for(var j=0;j<this.noArticleDatabook.length;j++) {
+      if(userData1[i] == this.noArticleDatabook[j])
       this.counting = this.counting+1;
     }
   }
-  console.log(this.counting)
   this.display()
+}
+
+removeArticles(data){
+  var data = data;
+  console.log(data)
+  var trainedArticles = this.trainedArticles;
+  for(var i=0;i<data.length;i++) {
+    for(var j=0;j<trainedArticles.length;j++) {
+    if(data[i] === this.trainedArticles[j]) {
+      console.log("hi")
+    }
+    }
+  }
 
 }
 

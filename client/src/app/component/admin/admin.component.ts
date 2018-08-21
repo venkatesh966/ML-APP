@@ -18,20 +18,38 @@ export class AdminComponent implements OnInit {
   public trained: TrainingData;
   public gettrainedData: any = [];
 
-  constructor(private adminService: AdminService,private _router:Router) {
+  constructor(private adminService: AdminService, private _router: Router) {
     this.trained = {
       trainedData: "",
+      trainedArticles: ""
     }
 
     this.BookDataString = {
-      bookdata:"",
-      Rating:""
+      bookdata: "",
+      noArticlebookdata: "",
+      Rating: ""
     }
   }
 
   addBookData() {
-      this.adminService.addBookData(this.BookDataString).subscribe((res) => {
-      console.log(res)});
+    console.log("In add book data")
+    var dummybookdataString = "";
+    var bookdata = this.BookDataString.bookdata;
+    var dummybookdata = bookdata.split(" ");
+    var trainedArticles = this.gettrainedData[4].trainedArticles;
+    var dummytrainedArticles = trainedArticles.split(" ");
+
+    for (var i = 0; i < dummybookdata.length; i++) {
+      for (var j = 0; j < dummytrainedArticles.length; j++) {
+        if (dummybookdata[i] === dummytrainedArticles[j]) {
+          console.log(dummybookdata[i])
+        }
+      }
+    }
+    //console.log(dummybookdataString)
+    // console.log(this.BookDataString)
+    //   this.adminService.addBookData(this.BookDataString).subscribe((res) => {
+    //   console.log(res)});
   }
 
 
@@ -42,7 +60,8 @@ export class AdminComponent implements OnInit {
     }
     else {
       this.adminService.addTrainedData(this.trained).subscribe((res) => {
-      console.log(res)});
+        console.log(res)
+      });
     }
   }
 
@@ -53,11 +72,13 @@ export class AdminComponent implements OnInit {
   }
 
   updateTrainBookData() {
-    this.gettrainedData[0].trainedData = this.gettrainedData[0].trainedData + " " + this.trained.trainedData;
+    this.gettrainedData[4].trainedData = this.gettrainedData[4].trainedData + " " + this.trained.trainedData;
+    this.gettrainedData[4].trainedArticles = this.gettrainedData[4].trainedArticles + " " + this.trained.trainedArticles;
     var query = {
-      trainedData:this.gettrainedData[0].trainedData
+      trainedData: this.gettrainedData[4].trainedData,
+      trainedArticles: this.gettrainedData[4].trainedArticles
     }
-    this.adminService.updateTrainedData(this.gettrainedData[0]._id, query).subscribe((res) => {
+    this.adminService.updateTrainedData(this.gettrainedData[4]._id, query).subscribe((res) => {
       console.log(res)
     });
   }
@@ -73,7 +94,7 @@ export class AdminComponent implements OnInit {
   logout() {
     this._router.navigate(['/']);
   }
-  
+
   ngOnInit() {
     this.getTrainBookData();
   }

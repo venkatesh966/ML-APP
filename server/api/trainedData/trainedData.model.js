@@ -5,7 +5,8 @@ var crypto = require('crypto'),
 
 var dataSchema = new Schema({
     
-    trainedData: { type: String }
+    trainedData: { type: String },
+    trainedArticles: { type: String }
     
 });
 
