@@ -88,7 +88,6 @@ removeArticles(data){
   for(var i=0;i<data.length;i++) {
     for(var j=0;j<trainedArticles.length;j++) {
     if(data[i] === this.trainedArticles[j]) {
-      console.log("hi")
     }
     }
   }
