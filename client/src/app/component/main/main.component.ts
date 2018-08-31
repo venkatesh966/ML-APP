@@ -113,7 +113,7 @@ addData()
     if(this.modellAdminLogin.name === "venkatesh966") {
       if(this.modellAdminLogin.password === "venki@123"){
         alert("logged In")
-        this.adminLoginFlag = false
+        this.adminLoginFlag = false;
         this._router.navigate(['/admin']);
       }
       else
@@ -124,6 +124,7 @@ addData()
   }
 
   ngOnInit() {
+    localStorage.setItem('key', '@123');
     this.display();
   }
 
