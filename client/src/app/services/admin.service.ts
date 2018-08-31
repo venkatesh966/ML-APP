@@ -22,7 +22,6 @@ export class AdminService {
   }
 
   updateTrainedData(id,query){
-    console.log("In service")
     return this.http.put("http://localhost:3000/api/traineddata/"+id,query)
         .map((res: Response) => res.json());
   }
@@ -33,7 +32,6 @@ export class AdminService {
   }
 
   addBookData(info){
-    console.log(info)
     return this.http.post("http://localhost:3000/api/admin",info)
         .map(res => res.json());
   }

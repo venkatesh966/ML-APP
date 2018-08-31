@@ -58,7 +58,6 @@ export class MainComponent implements OnInit {
   display(){
     this.loginDb.getData().subscribe(array=>{
       this.model=array;
-      console.log(this.model);
     })
 
   }
@@ -103,7 +102,6 @@ validatedataSignUp()
 addData()
 {
   this.loginDb.postData(this.modellSignUp).subscribe(res=>{
-    console.log(res)
     alert("Registration Happened Successfully")
   });
   }

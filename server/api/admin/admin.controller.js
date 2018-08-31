@@ -9,8 +9,6 @@ exports.getBookdata = function(req, res, next) {
 
 exports.createBookdata = function(req, res, next) {
     var array = req.body;
-    console.log(array)
-
     Bookdatamodel.create(req.body, function(err, data) {
         if (err) return next(new Error(err))
         return res.send(data);

@@ -1,10 +1,8 @@
 var model = require("./login.model");
 
 exports.get = function(req, res, next) {
-    console.log('I mai get')
     model.find( function(err, data) {
         if (err) return next(new Error(err))
-        console.log(data)
         return res.send(data);
     })
 }
@@ -14,8 +12,6 @@ exports.create = function(req, res, next) {
         emailid:req.body.emailid,
         password:req.body.password
     }
-    console.log("In create")
-    console.log(newdb);
     model.create(newdb,function(err,data){
         if (err) return next(new Error(err))
         return res.send({

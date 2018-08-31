@@ -32,7 +32,6 @@ export class AdminComponent implements OnInit {
   }
 
   addBookData() {
-    console.log("In add book data")
     var dummybookdataString = "";
     var bookdata = this.BookDataString.bookdata;
     var dummybookdata = bookdata.split(" ");
@@ -60,7 +59,6 @@ export class AdminComponent implements OnInit {
     }
     else {
       this.adminService.addTrainedData(this.trained).subscribe((res) => {
-        console.log(res)
       });
     }
   }
@@ -79,7 +77,6 @@ export class AdminComponent implements OnInit {
       trainedArticles: this.gettrainedData[4].trainedArticles
     }
     this.adminService.updateTrainedData(this.gettrainedData[4]._id, query).subscribe((res) => {
-      console.log(res)
     });
   }
 

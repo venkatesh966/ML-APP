@@ -27,12 +27,8 @@ export class UserComponent implements OnInit {
   getTrainBookData() {
     this.adminService.getTrainedData().subscribe((res) => {
       this.gettrainedData = res;
-      console.log(res)
        this.trainedData =  this.gettrainedData[4].trainedData.split(" ")
-      
-      console.log(this.trainedData)
       this.trainedArticles =  this.gettrainedData[4].trainedArticles.split(" ")
-      console.log(this.trainedArticles)
     });
    //this.trainedData = this.gettrainedData[0].trainedData.split(" ")
   }
@@ -62,7 +58,6 @@ contentEvaluation() {
 getBookData() {
   this.adminService.getBookData().subscribe((res) => {
     this.bookdata = res;
-    console.log(this.bookdata)
     for(var i=0;i<this.bookdata.length;i++){
     this.Databook[i] =  this.bookdata[i].bookdata
     }
@@ -83,7 +78,6 @@ problemSolving() {
 
 removeArticles(data){
   var data = data;
-  console.log(data)
   var trainedArticles = this.trainedArticles;
   for(var i=0;i<data.length;i++) {
     for(var j=0;j<trainedArticles.length;j++) {

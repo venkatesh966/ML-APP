@@ -12,9 +12,7 @@ export class GuardService implements CanActivate {
     var Path = state.url;
     if(Path == "/admin") {
       this.value = localStorage.getItem('key');
-      console.log('In canactivate')
       if(this.value !== "@123"){
-        console.log('In this.value')
         this.router.navigate(['/']);
         return true;
       }
