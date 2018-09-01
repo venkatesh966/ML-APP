@@ -108,11 +108,12 @@ addData()
 
 
   validateAdmin() {
-    if(this.modellAdminLogin.name === "venkatesh966") {
-      if(this.modellAdminLogin.password === "venki@123"){
+    if(this.modellAdminLogin.name === "v") {
+      if(this.modellAdminLogin.password === "v"){
         alert("logged In")
         this.adminLoginFlag = false;
         this._router.navigate(['/admin']);
+        console.log("In ")
       }
       else
       alert("Invalid credentials")

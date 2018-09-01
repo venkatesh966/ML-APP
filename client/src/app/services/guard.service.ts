@@ -10,20 +10,20 @@ export class GuardService implements CanActivate {
   canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot) {
 
     var Path = state.url;
-    if(Path == "/admin") {
+    if(Path === "/admin") {
       this.value = localStorage.getItem('key');
       if(this.value !== "@123"){
         this.router.navigate(['/']);
         return true;
       }
-      if(Path = "/user") {
+    }
+      if(Path === "/user") {
         this.value = localStorage.getItem('key');
         if(this.value !== "@123"){
           this.router.navigate(['/']);
           return true;
         }
       }
+      return true
     }
-  
-}
-}
+  }
