@@ -13,7 +13,7 @@ exports.createBookdata = function(req, res, next) {
 
     Bookdatamodel.create(req.body, function(err, data) {
         if (err) return next(new Error(err))
-        return res.send(data);
+        return res.status(200).send(data);
     })
 }
 

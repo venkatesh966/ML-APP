@@ -34,22 +34,38 @@ export class AdminComponent implements OnInit {
   addBookData() {
     console.log("In add book data")
     var dummybookdataString = "";
+    var count = 0;
     var bookdata = this.BookDataString.bookdata;
     var dummybookdata = bookdata.split(" ");
+    
     var trainedArticles = this.gettrainedData[4].trainedArticles;
     var dummytrainedArticles = trainedArticles.split(" ");
 
     for (var i = 0; i < dummybookdata.length; i++) {
       for (var j = 0; j < dummytrainedArticles.length; j++) {
         if (dummybookdata[i] === dummytrainedArticles[j]) {
+          count = count+1;
           console.log(dummybookdata[i])
         }
       }
+      if(count>0) {
+        console.log("In if")
+        count = 0;
+      }
+      else {
+        console.log("In else")
+        dummybookdataString =  dummybookdataString +  " " + dummybookdata[i] ;
+      }
     }
-    //console.log(dummybookdataString)
-    // console.log(this.BookDataString)
-    //   this.adminService.addBookData(this.BookDataString).subscribe((res) => {
-    //   console.log(res)});
+    console.log("After")
+   console.log(dummybookdataString);
+   console.log("BEFORE")
+    console.log(bookdata)
+    this.BookDataString.noArticlebookdata = dummybookdataString;
+    console.log( this.BookDataString.noArticlebookdata)
+      
+      this.adminService.addBookData(this.BookDataString).subscribe((res) => {
+      console.log(res)});
   }
 
 
@@ -68,6 +84,7 @@ export class AdminComponent implements OnInit {
   getTrainBookData() {
     this.adminService.getTrainedData().subscribe((res) => {
       this.gettrainedData = res;
+      console.log( this.gettrainedData)
     });
   }
 
