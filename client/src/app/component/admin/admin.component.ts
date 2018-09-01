@@ -45,25 +45,16 @@ export class AdminComponent implements OnInit {
       for (var j = 0; j < dummytrainedArticles.length; j++) {
         if (dummybookdata[i] === dummytrainedArticles[j]) {
           count = count+1;
-          console.log(dummybookdata[i])
         }
       }
       if(count>0) {
-        console.log("In if")
         count = 0;
       }
       else {
-        console.log("In else")
         dummybookdataString =  dummybookdataString +  " " + dummybookdata[i] ;
       }
     }
-    console.log("After")
-   console.log(dummybookdataString);
-   console.log("BEFORE")
-    console.log(bookdata)
-    this.BookDataString.noArticlebookdata = dummybookdataString;
-    console.log( this.BookDataString.noArticlebookdata)
-      
+    this.BookDataString.noArticlebookdata = dummybookdataString;      
       this.adminService.addBookData(this.BookDataString).subscribe((res) => {
       console.log(res)});
   }
@@ -84,7 +75,6 @@ export class AdminComponent implements OnInit {
   getTrainBookData() {
     this.adminService.getTrainedData().subscribe((res) => {
       this.gettrainedData = res;
-      console.log( this.gettrainedData)
     });
   }
 

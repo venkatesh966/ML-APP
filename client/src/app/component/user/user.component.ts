@@ -27,12 +27,8 @@ export class UserComponent implements OnInit {
   getTrainBookData() {
     this.adminService.getTrainedData().subscribe((res) => {
       this.gettrainedData = res;
-      console.log(res)
        this.trainedData =  this.gettrainedData[4].trainedData.split(" ")
-      
-      console.log(this.trainedData)
-      this.trainedArticles =  this.gettrainedData[4].trainedArticles.split(" ")
-      console.log(this.trainedArticles)
+    this.trainedArticles =  this.gettrainedData[4].trainedArticles.split(" ")
     });
    //this.trainedData = this.gettrainedData[0].trainedData.split(" ")
   }
@@ -50,7 +46,7 @@ export class UserComponent implements OnInit {
   }
 
 contentEvaluation() {
-  if(this.count>5){
+  if(this.count>0){
   alert("you are upset dont worry we will provide best solutions from famous books")
   this.problemSolving();
   }
@@ -62,7 +58,7 @@ contentEvaluation() {
 getBookData() {
   this.adminService.getBookData().subscribe((res) => {
     this.bookdata = res;
-    console.log(this.bookdata)
+    console.log(JSON.stringify(this.bookdata))
     for(var i=0;i<this.bookdata.length;i++){
     this.Databook[i] =  this.bookdata[i].bookdata
     }
@@ -72,10 +68,13 @@ getBookData() {
 problemSolving() {
   var userData1 = this.userData.split(" ");
   var userData2 = this.removeArticles(userData1);
-  for(var i=0;i<userData1.length;i++) {
+  console.log(userData2)
+  console.log("In problem")
+  for(var i=0;i<userData2.length;i++) {
     for(var j=0;j<this.noArticleDatabook.length;j++) {
       if(userData1[i] == this.noArticleDatabook[j])
       this.counting = this.counting+1;
+      console.log(this.counting)
     }
   }
   this.display()
@@ -83,16 +82,26 @@ problemSolving() {
 
 removeArticles(data){
   var data = data;
-  console.log(data)
+  var count = 0;
+  var dummystring = ""
   var trainedArticles = this.trainedArticles;
   for(var i=0;i<data.length;i++) {
     for(var j=0;j<trainedArticles.length;j++) {
     if(data[i] === this.trainedArticles[j]) {
-      console.log("hi")
+      count = count+1;
+        }
+      }
+      if(count>0) {
+        count = 0;
+      }
+      else {
+        dummystring =  dummystring +  " " + data[i] ;
+      }
     }
-    }
-  }
-
+  
+  console.log("In remove articles")
+  console.log(dummystring)
+  return dummystring;
 }
 
 display() {
