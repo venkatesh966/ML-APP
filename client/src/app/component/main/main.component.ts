@@ -58,7 +58,6 @@ export class MainComponent implements OnInit {
   display(){
     this.loginDb.getData().subscribe(array=>{
       this.model=array;
-      console.log(this.model);
     })
 
   }
@@ -110,8 +109,8 @@ addData()
 
 
   validateAdmin() {
-    if(this.modellAdminLogin.name === "venkatesh966") {
-      if(this.modellAdminLogin.password === "venki@123"){
+    if(this.modellAdminLogin.name === "v") {
+      if(this.modellAdminLogin.password === "v"){
         alert("logged In")
         this.adminLoginFlag = false
         this._router.navigate(['/admin']);
