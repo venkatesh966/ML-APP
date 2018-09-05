@@ -27,8 +27,8 @@ export class UserComponent implements OnInit {
   getTrainBookData() {
     this.adminService.getTrainedData().subscribe((res) => {
       this.gettrainedData = res;
-      this.trainedData = this.gettrainedData[4].trainedData.split(" ")
-      this.trainedArticles = this.gettrainedData[4].trainedArticles.split(" ")
+      this.trainedData = this.gettrainedData[0].trainedData.split(" ")
+      this.trainedArticles = this.gettrainedData[0].trainedArticles.split(" ")
     });
     //this.trainedData = this.gettrainedData[0].trainedData.split(" ")
   }
@@ -71,10 +71,11 @@ export class UserComponent implements OnInit {
     for (var i = 0; i < this.Databook.length; i++) {
       this.counting[i] = 0
       var split = this.Databook[i].noArticlebookdata.split(" ")
-      for (var k = 0; k < userData2.length; k++) {
+      for (var k = 0; k < userData3.length; k++) {
         for (var j = 0; j < split.length; j++) {
           if (userData3[k] == split[j]) {
             this.counting[i] = this.counting[i] + 1;
+           
           }
         }
       }
@@ -104,8 +105,15 @@ export class UserComponent implements OnInit {
   }
 
   display() {
-    console.log(this.counting)
-    alert(JSON.stringify(this.bookdata[6]))
+    var temp = this.counting[0];
+    var index = 0;
+    for(var i=1; i< this.counting.length; i++) {
+      if(temp<=this.counting[i]) {
+      temp=this.counting[i];
+      index = i;
+      }
+    }
+    alert(JSON.stringify(this.bookdata[index].bookdata))
   }
   logout() {
     this._router.navigate(['/']);

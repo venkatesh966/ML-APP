@@ -14,7 +14,7 @@ export class MainComponent implements OnInit {
   public userLoginFlag:boolean= false;
   public adminLoginFlag:boolean=false;
   public userSignUpFlag:boolean=false;
-  public valuesignUp:boolean;
+  public valuesignUp:boolean=true;
   public value:boolean=true;
   public model:any=[];
   public modellUserLogin:Login;
