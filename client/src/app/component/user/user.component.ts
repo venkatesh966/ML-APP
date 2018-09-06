@@ -27,13 +27,8 @@ export class UserComponent implements OnInit {
   getTrainBookData() {
     this.adminService.getTrainedData().subscribe((res) => {
       this.gettrainedData = res;
-<<<<<<< HEAD
       this.trainedData = this.gettrainedData[0].trainedData.split(" ")
       this.trainedArticles = this.gettrainedData[0].trainedArticles.split(" ")
-=======
-       this.trainedData =  this.gettrainedData[4].trainedData.split(" ")
-      this.trainedArticles =  this.gettrainedData[4].trainedArticles.split(" ")
->>>>>>> office
     });
     //this.trainedData = this.gettrainedData[0].trainedData.split(" ")
   }
@@ -69,7 +64,6 @@ export class UserComponent implements OnInit {
     });
   }
 
-<<<<<<< HEAD
   problemSolving() {
     var userData1 = this.userData.split(" ");
     var userData2 = this.removeArticles(userData1);
@@ -85,13 +79,6 @@ export class UserComponent implements OnInit {
           }
         }
       }
-=======
-getBookData() {
-  this.adminService.getBookData().subscribe((res) => {
-    this.bookdata = res;
-    for(var i=0;i<this.bookdata.length;i++){
-    this.Databook[i] =  this.bookdata[i].bookdata
->>>>>>> office
     }
     this.display()
   }
@@ -117,7 +104,6 @@ getBookData() {
     return dummystring;
   }
 
-<<<<<<< HEAD
   display() {
     var temp = this.counting[0];
     var index = 0;
@@ -126,15 +112,6 @@ getBookData() {
       temp=this.counting[i];
       index = i;
       }
-=======
-removeArticles(data){
-  var data = data;
-  var trainedArticles = this.trainedArticles;
-  for(var i=0;i<data.length;i++) {
-    for(var j=0;j<trainedArticles.length;j++) {
-    if(data[i] === this.trainedArticles[j]) {
-    }
->>>>>>> office
     }
     alert(JSON.stringify(this.bookdata[index].bookdata))
   }
