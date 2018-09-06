@@ -2,9 +2,9 @@ const express = require("express");
 var app = express();
 var bodyParser = require('body-parser');
 var mongoose = require('mongoose');
-var dbconectionurl = "mongodb://localhost:27017/mlapptest";
+var dbconnectionurl = "mongodb://localhost:27017/mlapptest";
 var path = require('path');
-mongoose.connect(dbconectionurl, {}, function(err) {
+mongoose.connect(dbconnectionurl, {}, function(err) {
     if (err) console.log("Error in db connection", new Error(err));
     app.use(bodyParser.urlencoded({ extended: false }));
     app.use(bodyParser.json());
