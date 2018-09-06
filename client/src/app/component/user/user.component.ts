@@ -117,7 +117,6 @@ getBookData() {
     return dummystring;
   }
 
-<<<<<<< HEAD
   display() {
     var temp = this.counting[0];
     var index = 0;
@@ -126,15 +125,6 @@ getBookData() {
       temp=this.counting[i];
       index = i;
       }
-=======
-removeArticles(data){
-  var data = data;
-  var trainedArticles = this.trainedArticles;
-  for(var i=0;i<data.length;i++) {
-    for(var j=0;j<trainedArticles.length;j++) {
-    if(data[i] === this.trainedArticles[j]) {
-    }
->>>>>>> office
     }
     alert(JSON.stringify(this.bookdata[index].bookdata))
   }

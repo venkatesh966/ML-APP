@@ -83,7 +83,7 @@ export class AdminComponent implements OnInit {
       trainedData: this.gettrainedData[0].trainedData,
       trainedArticles: this.gettrainedData[0].trainedArticles
     }
-    this.adminService.updateTrainedData(this.gettrainedData[4]._id, query).subscribe((res) => {
+    this.adminService.updateTrainedData(this.gettrainedData[0]._id, query).subscribe((res) => {
     });
   }
 

@@ -113,7 +113,6 @@ addData()
         alert("logged In")
         this.adminLoginFlag = false;
         this._router.navigate(['/admin']);
-        console.log("In ")
       }
       else
       alert("Invalid credentials")
