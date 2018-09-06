@@ -102,7 +102,6 @@ validatedataSignUp()
 addData()
 {
   this.loginDb.postData(this.modellSignUp).subscribe(res=>{
-    console.log(res)
     alert("Registration Happened Successfully")
   });
   }
@@ -112,8 +111,9 @@ addData()
     if(this.modellAdminLogin.name === "v") {
       if(this.modellAdminLogin.password === "v"){
         alert("logged In")
-        this.adminLoginFlag = false
+        this.adminLoginFlag = false;
         this._router.navigate(['/admin']);
+        console.log("In ")
       }
       else
       alert("Invalid credentials")
@@ -123,6 +123,7 @@ addData()
   }
 
   ngOnInit() {
+    localStorage.setItem('key', '@123');
     this.display();
   }
 

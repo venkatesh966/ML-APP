@@ -66,7 +66,6 @@ export class AdminComponent implements OnInit {
     }
     else {
       this.adminService.addTrainedData(this.trained).subscribe((res) => {
-        console.log(res)
       });
     }
   }
@@ -85,7 +84,6 @@ export class AdminComponent implements OnInit {
       trainedArticles: this.gettrainedData[0].trainedArticles
     }
     this.adminService.updateTrainedData(this.gettrainedData[4]._id, query).subscribe((res) => {
-      console.log(res)
     });
   }
 

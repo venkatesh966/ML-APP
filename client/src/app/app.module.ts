@@ -9,6 +9,7 @@ import { RoutingModule } from './routing/routing.module';
 import { MainComponent } from './component/main/main.component';
 import { AdminService } from './services/admin.service';
 import { UserService } from './services/user.service';
+import { GuardService } from './services/guard.service';
 
 
 @NgModule({
@@ -24,7 +25,7 @@ import { UserService } from './services/user.service';
     FormsModule,
     HttpModule
   ],
-  providers: [AdminService,UserService],
+  providers: [AdminService,UserService,GuardService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
