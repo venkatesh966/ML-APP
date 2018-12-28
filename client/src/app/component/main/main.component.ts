@@ -85,6 +85,7 @@ export class MainComponent implements OnInit {
 
 validatedataSignUp()
 {
+  this.valuesignUp = true;
   for(var i=0;i<this.model.length; i++){
     if(this.model[i].emailid === this.modellSignUp.emailid)
     {

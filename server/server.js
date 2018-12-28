@@ -6,6 +6,7 @@ var dbconnectionurl = "mongodb://localhost:27017/mlapptest";
 var path = require('path');
 mongoose.connect(dbconnectionurl, {}, function(err) {
     if (err) console.log("Error in db connection", new Error(err));
+    console.log("connected to local DB")
     app.use(bodyParser.urlencoded({ extended: false }));
     app.use(bodyParser.json());
     require("./routes.js")(app);
