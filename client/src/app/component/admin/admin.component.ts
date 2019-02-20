@@ -3,7 +3,7 @@ import { AdminService } from '../../services/admin.service';
 import { TrainingData } from '../../interfaces/admin';
 import { BookData } from '../../interfaces/admin2';
 import { Router } from '@angular/router';
-declare var $: any;
+declare let $: any;
 @Component({
   selector: 'app-admin',
   templateUrl: './admin.component.html',
@@ -12,7 +12,7 @@ declare var $: any;
 export class AdminComponent implements OnInit {
 
 
-
+  public index:number = 0;
   public trainBookString: string;
   public BookDataString: BookData;
   public trained: TrainingData;
@@ -32,16 +32,16 @@ export class AdminComponent implements OnInit {
   }
 
   addBookData() {
-    var dummybookdataString = "";
-    var count = 0;
-    var bookdata = this.BookDataString.bookdata;
-    var dummybookdata = bookdata.split(" ");
-    
-    var trainedArticles = this.gettrainedData[0].trainedArticles;
-    var dummytrainedArticles = trainedArticles.split(" ");
-
-    for (var i = 0; i < dummybookdata.length; i++) {
-      for (var j = 0; j < dummytrainedArticles.length; j++) {
+    let dummybookdataString = "";
+    let count = 0;
+    let bookdata = this.BookDataString.bookdata;
+    let dummybookdata = bookdata.split(" ");
+    if(this.gettrainedData[this.index]) {
+    let trainedArticles = this.gettrainedData[this.index].trainedArticles;
+  var dummytrainedArticles = trainedArticles.split(" ");
+  
+    for (let i = 0; i < dummybookdata.length; i++) {
+      for (let j = 0; j < dummytrainedArticles.length; j++) {
         if (dummybookdata[i] === dummytrainedArticles[j]) {
           count = count+1;
         }
@@ -53,7 +53,8 @@ export class AdminComponent implements OnInit {
         dummybookdataString =  dummybookdataString +  " " + dummybookdata[i] ;
       }
     }
-    this.BookDataString.noArticlebookdata = dummybookdataString;      
+    this.BookDataString.noArticlebookdata = dummybookdataString;    
+  }  
       this.adminService.addBookData(this.BookDataString).subscribe((res) => {
       console.log(res)});
   }
@@ -77,13 +78,13 @@ export class AdminComponent implements OnInit {
   }
 
   updateTrainBookData() {
-    this.gettrainedData[0].trainedData = this.gettrainedData[0].trainedData + " " + this.trained.trainedData;
-    this.gettrainedData[0].trainedArticles = this.gettrainedData[0].trainedArticles + " " + this.trained.trainedArticles;
-    var query = {
-      trainedData: this.gettrainedData[0].trainedData,
-      trainedArticles: this.gettrainedData[0].trainedArticles
+    this.gettrainedData[this.index].trainedData = this.gettrainedData[this.index].trainedData + " " + this.trained.trainedData;
+    this.gettrainedData[this.index].trainedArticles = this.gettrainedData[this.index].trainedArticles + " " + this.trained.trainedArticles;
+    let query = {
+      trainedData: this.gettrainedData[this.index].trainedData,
+      trainedArticles: this.gettrainedData[this.index].trainedArticles
     }
-    this.adminService.updateTrainedData(this.gettrainedData[0]._id, query).subscribe((res) => {
+    this.adminService.updateTrainedData(this.gettrainedData[this.index]._id, query).subscribe((res) => {
     });
   }
 

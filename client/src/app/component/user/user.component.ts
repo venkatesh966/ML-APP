@@ -46,7 +46,9 @@ export class UserComponent implements OnInit {
   }
 
   contentEvaluation() {
-    if (this.count > 0) {
+    let negativeContentPercent = (this.count/this.userDataLength)*100
+    // alert("")
+    if (negativeContentPercent > 30) {
       alert("you are upset dont worry we will provide best solutions from famous books")
       this.problemSolving();
     }

@@ -63,7 +63,7 @@ export class MainComponent implements OnInit {
   }
   validatedata()
   {
-    for(var i=0;i<this.model.length; i++)
+    for(let i=0;i<this.model.length; i++)
     {
       if(this.model[i].emailid === this.modellUserLogin.emailid)
       {
@@ -86,7 +86,7 @@ export class MainComponent implements OnInit {
 validatedataSignUp()
 {
   this.valuesignUp = true;
-  for(var i=0;i<this.model.length; i++){
+  for(let i=0;i<this.model.length; i++){
     if(this.model[i].emailid === this.modellSignUp.emailid)
     {
       this.valuesignUp=false;
